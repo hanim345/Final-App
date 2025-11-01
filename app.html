@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="app.css" rel="stylesheet">
+  <title>My To-Do List</title>
+</head>
+
+<body>
+<div id="theWhole">
+<header> 
+  <h2>My To-Do Lists</h2>
+</header>
+
+<main>
+
+  <nav id="categoryNav">
+    <button class="category active" data-category="active">All</button>
+    <button class="category">School</button>
+    <button class="category">Work</button>
+    <button class="category">Deen</button>
+    <button class="category">Personal</button>
+    <button class="category">Home</button>
+    <button id ="addCategory">+ Add Category</button>
+    </nav>
+
+  <section>
+    <h2>My Tasks (<span id="taskCount">0</span>)</h2>
+    <ul id="taskList">
+    </ul>
+  </section>
+
+  <section>
+    <input type="text" id="newTask" placeholder="Add a task">
+    <button id="addBtn">Add</button>
+  </section>
+</main>
+
+<footer>
+  <blockquote>
+    ~ One day or Day-One, you decide.~
+  </blockquote>
+</footer>
+</div>
+   <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
