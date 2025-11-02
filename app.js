@@ -3,6 +3,10 @@ const addBtn = document.getElementById('addBtn');
 const taskCount = document.getElementById('taskCount');
 const taskList = document.getElementById('taskList');
 
+const categoryNav = document.getElementById('categoryNav');
+    const addCategoryBtn = document.getElementById('addCategory');
+    let currentCategory = 'all';
+
 let taskCounter = taskList.children.length;
 
 function updateTaskCount() {
@@ -10,6 +14,40 @@ function updateTaskCount() {
 }
 
 updateTaskCount();
+
+    // Category switching
+categoryNav.addEventListener('click', (e) => {
+    if (e.target.classList.contains('category')) {
+      document.querySelectorAll('.category').forEach(btn => btn.classList.remove('active'));
+      e.target.classList.add('active');
+      currentCategory = e.target.dataset.category;
+      filterTasks();
+    }
+  });
+  
+  // Add new category 
+  addCategoryBtn.addEventListener('click', () => {
+    const newCat = prompt('Enter new category name:');
+    if (newCat && newCat.trim() !== '') {
+      const newButton = document.createElement('button');
+      newButton.classList.add('category');
+      newButton.textContent = newCat.trim();
+      newButton.dataset.category = newCat.toLowerCase();
+      categoryNav.insertBefore(newButton, addCategoryBtn);
+    }
+  });
+    
+
+    function filterTasks() {
+        const allTasks = taskList.children;
+        for (let task of allTasks) {
+          if (currentCategory === 'all' || task.dataset.category === currentCategory) {
+            task.style.display = 'flex';
+          } else {
+            task.style.display = 'none';
+          }
+        }
+      }
 
 addBtn.addEventListener('click', () => {
     const taskText = newTask.value.trim();
@@ -21,6 +59,7 @@ addBtn.addEventListener('click', () => {
     
     const listItem = document.createElement('li');
     listItem.classList.add('taskText');
+    listItem.dataset.category = currentCategory;
     
     const checkBox = document.createElement('input');
     checkBox.type = 'checkbox';
@@ -65,7 +104,9 @@ addBtn.addEventListener('click', () => {
     
     buttonContainer.appendChild(editBtn);
     buttonContainer.appendChild(deleteBtn);
+
     
+      
     listItem.appendChild(checkBox);
     listItem.appendChild(taskContentSpan);
     listItem.appendChild(buttonContainer);
