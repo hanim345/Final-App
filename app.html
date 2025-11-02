@@ -18,24 +18,26 @@
 <main>
 
   <nav id="categoryNav">
-    <button class="category active" data-category="active">All</button>
-    <button class="category">School</button>
-    <button class="category">Work</button>
-    <button class="category">Deen</button>
-    <button class="category">Personal</button>
-    <button class="category">Home</button>
+    <button class="category active" data-category="all">All</button>
+    <button class="category" data-category="school">School</button>
+    <button class="category" data-category="work">Work</button>
+    <button class="category" data-category="deen">Deen</button>
+    <button class="category" data-category="personal">Personal</button>
+    <button class="category" data-category="home">Home</button>
     <button id ="addCategory">+ Add Category</button>
     </nav>
 
   <section>
-    <h2>My Tasks (<span id="taskCount">0</span>)</h2>
+    <h2 id="tasks">My Tasks (<span id="taskCount">0</span>)</h2>
     <ul id="taskList">
     </ul>
   </section>
 
   <section>
+    <div class="input-container">
     <input type="text" id="newTask" placeholder="Add a task">
     <button id="addBtn">Add</button>
+  </div>
   </section>
 </main>
 
